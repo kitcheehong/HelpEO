@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:windowFullscreen">true</item>-->
+    </style>
+
+    <style name="AppTheme" parent="@style/AppBaseTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--引导页展示大图页面，全屏显示-->
+    <style name="ViewBigPicTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--城市选择器-->
+    <style name="CustomTheme" parent="DefaultCityPickerTheme">
+        <!--<item name="cpCancelTextColor">@color/color_green</item>-->
+        <!--<item name="cpSearchCursorDrawable">@color/color_green</item>-->
+        <!--<item name="cpIndexBarNormalTextColor">@color/color_green</item>-->
+        <!--<item name="cpIndexBarSelectedTextColor">@color/color_green</item>-->
+        <!--<item name="cpSectionHeight">@dimen/custom_section_height</item>-->
+        <!--<item name="cpOverlayBackground">@color/color_green</item>-->
+    </style>
+
+    <style name="CustomAnim">
+        <item name="android:windowEnterAnimation">@anim/custom_push_down_in</item>
+        <item name="android:windowExitAnimation">@anim/custom_push_up_out</item>
+    </style>
+</resources>

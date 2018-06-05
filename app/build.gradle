@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicaionId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // 开启dataBinding
+    dataBinding{
+        enabled = true
+    }
+
+    //Bmob后端云相关配置
+    /**兼容Android6.0系统所需，如果这句话报错，可在dependencies标签下使用compile 'cn.bmob.android:http-legacy:1.0'**/
+    useLibrary 'org.apache.http.legacy'
+
+    //签名
+    signingConfigs {
+        release {
+            try {
+                storeFile file("./keystore/helpEo.jks")
+                storePassword "kitchee91"
+                keyAlias "mySign"
+                keyPassword "kitchee91"
+            } catch (ex) {
+                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+        debug{
+            try {
+                storeFile file("./keystore/helpEo.jks")
+                storePassword "kitchee91"
+                keyAlias "mySign"
+                keyPassword "kitchee91"
+            } catch (ex) {
+                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compile "com.android.support:recyclerview-v7:26.1.0"
+    implementation project(":swipebacklib")
+
+    //
+    //以下SDK开发者请根据需要自行选择
+    //bmob-sdk：Bmob的android sdk包，包含了Bmob的数据存储、文件等服务，以下是最新的bmob-sdk:
+    //3.5.5：请务必查看下面注释[1]
+    compile 'cn.bmob.android:bmob-sdk:3.6.2'
+
+    //bmob-push：Bmob的推送包
+    compile 'cn.bmob.android:bmob-push:0.8'
+
+    //bmob-im：Bmob的即时通讯包，注意每个版本的im依赖特定版本的bmob-sdk，具体的依赖关系可查看下面注释[2]
+    compile 'cn.bmob.android:bmob-im:2.1.0@aar'
+
+    //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
+    compile 'cn.bmob.android:http-legacy:1.0'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    //cityPicker
+    implementation ('com.zaaach:citypicker:2.0.2')
+//            {
+//        exclude(module:'com.android.support:recyclerview-v7:27.1.1')
+//    }
+
+    //banner
+    implementation 'com.youth.banner:banner:1.4.10'
+
+}
+repositories {
+    mavenCentral()
+}
