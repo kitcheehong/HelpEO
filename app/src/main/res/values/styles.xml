@@ -33,8 +33,17 @@
         <!--<item name="cpOverlayBackground">@color/color_green</item>-->
     </style>
 
+    <!--地址选择器页面动画-->
     <style name="CustomAnim">
         <item name="android:windowEnterAnimation">@anim/custom_push_down_in</item>
         <item name="android:windowExitAnimation">@anim/custom_push_up_out</item>
     </style>
+
+    <!--搜索页面透明-->
+    <style name="Translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
 </resources>
