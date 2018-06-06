@@ -87,6 +87,9 @@ dependencies {
     //banner
     implementation 'com.youth.banner:banner:1.4.10'
 
+    //RxJava
+
+
 }
 repositories {
     mavenCentral()

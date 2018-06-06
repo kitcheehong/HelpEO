@@ -10,6 +10,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/sendRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="发起请求"
+            />
+        <Button
+            android:id="@+id/interruptRequest"
+            android:layout_below="@+id/sendRequest"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="中断请求"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_below="@+id/interruptRequest"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
     </RelativeLayout>
 
 </layout>
