@@ -16,6 +16,6 @@ public class RxJavaTextActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSwipeBackEnable(true);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_rxjava_test);
     }
 }

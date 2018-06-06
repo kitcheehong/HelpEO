@@ -38,6 +38,8 @@
         <activity android:name=".MainActivity"
             android:theme="@style/DefaultCityPickerTheme"
             />
+        <activity android:name=".SearchActivity"
+            android:theme="@style/Translucent"/>
     </application>
 
 </manifest>

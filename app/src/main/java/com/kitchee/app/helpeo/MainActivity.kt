@@ -1,7 +1,9 @@
 package com.kitchee.app.helpeo
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import cn.bmob.v3.BmobQuery
@@ -11,7 +13,6 @@ import com.kitchee.app.helpeo.appCommon.GlideImageLoader
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
 import com.kitchee.app.helpeo.bean.User
-import com.kitchee.app.helpeo.utils.DisplayUtil
 import com.kitchee.app.helpeo.utils.StatusBarUtils
 import com.youth.banner.Banner
 import com.zaaach.citypicker.CityPicker
@@ -30,10 +31,10 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         val textView: TextView? = findViewById(R.id.tv_show) as TextView?
         val tvCityPick:TextView? = findViewById(R.id.addr_sel) as TextView?
+        val editText:EditText? = findViewById(R.id.cwet_edit) as EditText?
         setSwipeBackEnable(true)
 
         StatusBarUtils.setTranslucentStatusBar(this, false)
-//        val statusBarHeight = DisplayUtil.getStatusBarHeight(this)
 
         val banner = findViewById(R.id.banner) as Banner
         //设置图片加载器
@@ -57,27 +58,27 @@ class MainActivity : BaseActivity() {
 
 
         //查找Person表里面id为6b6c11c537的数据
-        val bmobQuery = BmobQuery<User>();
+        val bmobQuery = BmobQuery<User>()
         bmobQuery.getObject("732766cb49", object : QueryListener<User>() {
             override fun done(p0: User?, p1: BmobException?) {
                 if (p1 == null) {
                     show("查询成功")
-                    textView?.setText(p0.toString())
+                    textView?.text = p0.toString()
                 } else {
                     show("查询失败")
                 }
             }
         }
-        );
+        )
 
         val hotCities = listOf(HotCity("北京", "北京", "101010100"), HotCity("上海", "上海", "101020100")
-                , HotCity("广州", "广东", "101280101"), HotCity("深圳", "广东", "101280601"), HotCity("杭州", "浙江", "101210101"));
+                , HotCity("广州", "广东", "101280101"), HotCity("深圳", "广东", "101280601"), HotCity("杭州", "浙江", "101210101"))
         val anim = R.style.CustomAnim
 
         class onCityPick: OnPickListener{
             override fun onPick(position: Int, data: City?) {
-                textView?.setText(data?.name)
-                tvCityPick?.setText(data?.name)
+                textView?.text = data?.name
+                tvCityPick?.text = data?.name
                 show(msg = data?.name)
             }
 
@@ -91,7 +92,7 @@ class MainActivity : BaseActivity() {
 
         tvCityPick?.setOnClickListener{
             CityPicker.getInstance()
-                    .setFragmentManager(getSupportFragmentManager())    //此方法必须调用
+                    .setFragmentManager(supportFragmentManager)    //此方法必须调用
                     .enableAnimation(true)    //启用动画效果
                     .setAnimationStyle(anim)    //自定义动画
                     .setLocatedCity(LocatedCity ("杭州", "浙江", "101210101"))  //APP自身已定位的城市，默认为null（定位失败）
@@ -99,11 +100,21 @@ class MainActivity : BaseActivity() {
                     .setOnPickListener(cityPicklis)
                     .show();}
 
+        editText?.setOnClickListener{
+            val intent = Intent(this@MainActivity, SearchActivity::class.java)
+            val location = IntArray(2)
+            editText.getLocationOnScreen(location)
+            intent.putExtra("x", location[0])
+            intent.putExtra("y", location[1])
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
 
     }
 
     fun show(msg: String?) {
-        Toast.makeText(HelpEOApplication.getInstance().applicationContext, msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(HelpEOApplication.getInstance().applicationContext, msg, Toast.LENGTH_LONG).show()
     }
 
 
