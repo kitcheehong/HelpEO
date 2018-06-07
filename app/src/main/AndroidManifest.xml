@@ -40,6 +40,8 @@
             />
         <activity android:name=".SearchActivity"
             android:theme="@style/Translucent"/>
+
+        <activity android:name=".testRxJava.RxJavaTextActivity"/>
     </application>
 
 </manifest>
