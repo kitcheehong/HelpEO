@@ -4,15 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import cn.bmob.v3.BmobQuery
-import cn.bmob.v3.exception.BmobException
-import cn.bmob.v3.listener.QueryListener
+
 import com.kitchee.app.helpeo.appCommon.GlideImageLoader
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
-import com.kitchee.app.helpeo.bean.User
+import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
 import com.kitchee.app.helpeo.utils.StatusBarUtils
 import com.youth.banner.Banner
 import com.zaaach.citypicker.CityPicker
@@ -32,6 +31,7 @@ class MainActivity : BaseActivity() {
         val textView: TextView? = findViewById(R.id.tv_show) as TextView?
         val tvCityPick:TextView? = findViewById(R.id.addr_sel) as TextView?
         val editText:EditText? = findViewById(R.id.cwet_edit) as EditText?
+        val ivScan:ImageView? = findViewById(R.id.scan) as ImageView?
         setSwipeBackEnable(true)
 
         StatusBarUtils.setTranslucentStatusBar(this, false)
@@ -58,18 +58,18 @@ class MainActivity : BaseActivity() {
 
 
         //查找Person表里面id为6b6c11c537的数据
-        val bmobQuery = BmobQuery<User>()
-        bmobQuery.getObject("732766cb49", object : QueryListener<User>() {
-            override fun done(p0: User?, p1: BmobException?) {
-                if (p1 == null) {
-                    show("查询成功")
-                    textView?.text = p0.toString()
-                } else {
-                    show("查询失败")
-                }
-            }
-        }
-        )
+//        val bmobQuery = BmobQuery<User>()
+//        bmobQuery.getObject("732766cb49", object : QueryListener<User>() {
+//            override fun done(p0: User?, p1: BmobException?) {
+//                if (p1 == null) {
+//                    show("查询成功")
+//                    textView?.text = p0.toString()
+//                } else {
+//                    show("查询失败")
+//                }
+//            }
+//        }
+//        )
 
         val hotCities = listOf(HotCity("北京", "北京", "101010100"), HotCity("上海", "上海", "101020100")
                 , HotCity("广州", "广东", "101280101"), HotCity("深圳", "广东", "101280601"), HotCity("杭州", "浙江", "101210101"))
@@ -110,6 +110,11 @@ class MainActivity : BaseActivity() {
             overridePendingTransition(0, 0)
         }
 
+        ivScan?.setOnClickListener{
+            val intent = Intent(this@MainActivity,RxJavaTextActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.screen_zoom_in, R.anim.screen_zoom_out)
+        }
 
     }
 

@@ -1,13 +1,13 @@
 package com.kitchee.app.helpeo.bean;
 
-import cn.bmob.v3.BmobObject;
+
 
 /**
  * Created by kitchee on 2018/5/31.
  * desc :
  */
 
-public class Poster extends BmobObject {
+public class Poster  {
     private int versionCode;
     private String posterUrl;
 
@@ -15,7 +15,7 @@ public class Poster extends BmobObject {
     }
 
     public Poster(String tableName, int versionCode, String posterUrl) {
-        super(tableName);
+
         this.versionCode = versionCode;
         this.posterUrl = posterUrl;
     }

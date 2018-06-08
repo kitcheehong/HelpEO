@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.kitchee.app.helpeo.bean.ZhuangbiImg;
-import com.kitchee.app.helpeo.network.api.NetWork;
+import com.kitchee.app.helpeo.network.NetWork;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by kitchee on 2018/6/7.
- * desc :
+ * desc : MVVM -VM
  */
 
 public class MyHandler {
@@ -31,7 +31,7 @@ public class MyHandler {
 
     /**开始加载数据**/
     public void onClickStart(){
-        search("装逼");
+        search("可爱");
     }
     /**取消加载数据**/
     public void onClickCancel(){
@@ -53,6 +53,7 @@ public class MyHandler {
                     @Override
                     public void accept(List<ZhuangbiImg> zhuangbiImgs) throws Exception {
                         adapter.setImages(zhuangbiImgs);
+                        removeDisposble();
                     }
                 }, new Consumer<Throwable>() {
                     @Override

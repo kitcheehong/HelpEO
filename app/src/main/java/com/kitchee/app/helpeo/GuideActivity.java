@@ -12,17 +12,14 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.kitchee.app.helpeo.base.BaseActivity;
-import com.kitchee.app.helpeo.bean.Poster;
+
 import com.kitchee.app.helpeo.databinding.ActivityGuideBinding;
 import com.kitchee.app.helpeo.utils.CommonUtil;
 import com.kitchee.app.helpeo.utils.PerfectClickListener;
 
 import java.lang.ref.WeakReference;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.QueryListener;
+
 
 /**
  * Created by kitchee on 2018/5/31.
@@ -43,7 +40,7 @@ public class GuideActivity extends BaseActivity {
         setSwipeBackEnable(false);
 
         //第一：默认初始化
-        Bmob.initialize(this, "37f0a7bba95694ccdf24fdcce9bc7e51");
+//        Bmob.initialize(this, "37f0a7bba95694ccdf24fdcce9bc7e51");
         // 数据绑定
         activityGuideBinding =  DataBindingUtil.setContentView(this,R.layout.activity_guide);
 
@@ -64,22 +61,24 @@ public class GuideActivity extends BaseActivity {
         myHandler.sendEmptyMessageDelayed(1,3000);
         //从网络上下载图片
         //查找Person表里面id为6b6c11c537的数据
-        BmobQuery<Poster> bmobQuery = new BmobQuery<Poster>();
-        bmobQuery.getObject("sb9HFFFX", new QueryListener<Poster>() {
-            @Override
-            public void done(Poster object,BmobException e) {
-                if(e==null){
-//                    show("查询成功");
-                    posterurl=object.getPosterUrl();
-                    Log.d("kitchee", "done:posterUrl = "+ posterurl);
-                    showRandomPoster();
-                }else{
-                    show("查询失败：" + e.getMessage());
-                }
-            }
-        });
+//        BmobQuery<Poster> bmobQuery = new BmobQuery<Poster>();
+//        bmobQuery.getObject("sb9HFFFX", new QueryListener<Poster>() {
+//            @Override
+//            public void done(Poster object,BmobException e) {
+//                if(e==null){
+////                    show("查询成功");
+//                    posterurl=object.getPosterUrl();
+//                    Log.d("kitchee", "done:posterUrl = "+ posterurl);
+//                    showRandomPoster();
+//                }else{
+//                    show("查询失败：" + e.getMessage());
+//                }
+//            }
+//        });
 
-
+        posterurl="http://ojyz0c8un.bkt.clouddn.com/b_2.jpg";
+        Log.d("kitchee", "done:posterUrl = "+ posterurl);
+        showRandomPoster();
 
         activityGuideBinding.skip.setOnClickListener(new PerfectClickListener() {
             @Override

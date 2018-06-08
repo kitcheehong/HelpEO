@@ -1,12 +1,12 @@
 package com.kitchee.app.helpeo.bean
 
-import cn.bmob.v3.BmobObject
+
 
 /**
  * Created by kitchee on 2018/5/31.
  * desc : user用户信息
  */
 
-data class User(val user_id: Int = 0, val nickName: String? = null, val realName: String? = null, val age: Int = 0, val sex: Int = 0, val lastLoginTime: Long = 0, val registerTime: Long = 0) : BmobObject(
+data class User(val user_id: Int = 0, val nickName: String? = null, val realName: String? = null, val age: Int = 0, val sex: Int = 0, val lastLoginTime: Long = 0, val registerTime: Long = 0)
 
-)
+

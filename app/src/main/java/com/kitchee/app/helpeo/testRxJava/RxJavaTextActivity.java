@@ -33,7 +33,7 @@ public class RxJavaTextActivity extends BaseActivity {
         dataBinding.setMyHandler(myHandler);
 
         recyclerView = dataBinding.recycleView;
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         adapter = new ZhuangbiAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
