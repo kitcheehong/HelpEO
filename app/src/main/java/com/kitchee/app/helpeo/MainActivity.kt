@@ -3,6 +3,10 @@ package com.kitchee.app.helpeo
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,7 +15,10 @@ import android.widget.Toast
 import com.kitchee.app.helpeo.appCommon.GlideImageLoader
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
+import com.kitchee.app.helpeo.bean.ZhuangbiImg
+import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
+import com.kitchee.app.helpeo.testRxJava.ZhuangbiAdapter
 import com.kitchee.app.helpeo.utils.StatusBarUtils
 import com.youth.banner.Banner
 import com.zaaach.citypicker.CityPicker
@@ -20,10 +27,17 @@ import com.zaaach.citypicker.model.City
 import com.zaaach.citypicker.model.HotCity
 import com.zaaach.citypicker.model.LocateState
 import com.zaaach.citypicker.model.LocatedCity
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 
 
 class MainActivity : BaseActivity() {
     private val imageUrls = arrayOf("http://www.fdhao.cn/data/afficheimg/1495390513544727777.jpg", "http://www.fdhao.cn/data/afficheimg/1495589062250157826.jpg", "http://www.fdhao.cn/data/afficheimg/1494812104978168405.jpg", "http://www.fdhao.cn/data/afficheimg/1494981105456344186.jpg", "http://www.fdhao.cn/data/afficheimg/1495390183732065802.jpg", "http://www.fdhao.cn/data/afficheimg/1495409860833294008.jpg", "http://www.fdhao.cn/data/afficheimg/1494812581931179021.jpg", "http://www.fdhao.cn/data/afficheimg/1495588873555624520.jpg")
+
+    protected var disposable: Disposable? = null
+    private val adapter: LabelItemAdapter = LabelItemAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +46,7 @@ class MainActivity : BaseActivity() {
         val tvCityPick:TextView? = findViewById(R.id.addr_sel) as TextView?
         val editText:EditText? = findViewById(R.id.cwet_edit) as EditText?
         val ivScan:ImageView? = findViewById(R.id.scan) as ImageView?
+        val recycleView:RecyclerView? = findViewById(R.id.recycleView) as RecyclerView?
         setSwipeBackEnable(true)
 
         StatusBarUtils.setTranslucentStatusBar(this, false)
@@ -116,13 +131,39 @@ class MainActivity : BaseActivity() {
             overridePendingTransition(R.anim.screen_zoom_in, R.anim.screen_zoom_out)
         }
 
+        val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recycleView?.setLayoutManager(manager)
+//        val adapter = ZhuangbiAdapter()
+        recycleView?.setAdapter(adapter)
+        recycleView?.setItemAnimator(DefaultItemAnimator())
+        search("在下")
+
     }
 
     fun show(msg: String?) {
         Toast.makeText(HelpEOApplication.getInstance().applicationContext, msg, Toast.LENGTH_LONG).show()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        if (disposable != null && disposable?.isDisposed() != true) {
+            disposable?.dispose()
+        }
+    }
+
+    private fun search(key: String) {
+        disposable = NetWork.getZhuangbiApi()
+                .search(key)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ zhuangbiImgs ->
+                    adapter.setImages(zhuangbiImgs)
+                    disposable?.dispose()
+                }) { Toast.makeText(this, "数据加载失败", Toast.LENGTH_SHORT).show() }
+    }
 
 }
+
+
 
 

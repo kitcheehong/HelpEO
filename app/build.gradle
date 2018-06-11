@@ -119,6 +119,9 @@ dependencies {
     //硬盘缓存
 //    compile 'com.jakewharton:disklrucache:2.0.2'
 
+    //圆形图片
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 
 }
 repositories {
