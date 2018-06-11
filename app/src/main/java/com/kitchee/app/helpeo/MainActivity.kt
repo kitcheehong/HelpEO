@@ -4,21 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-
 import com.kitchee.app.helpeo.appCommon.GlideImageLoader
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
-import com.kitchee.app.helpeo.bean.ZhuangbiImg
 import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
-import com.kitchee.app.helpeo.testRxJava.ZhuangbiAdapter
 import com.kitchee.app.helpeo.utils.StatusBarUtils
 import com.youth.banner.Banner
 import com.zaaach.citypicker.CityPicker
@@ -29,7 +25,6 @@ import com.zaaach.citypicker.model.LocateState
 import com.zaaach.citypicker.model.LocatedCity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 
@@ -38,6 +33,7 @@ class MainActivity : BaseActivity() {
 
     protected var disposable: Disposable? = null
     private val adapter: LabelItemAdapter = LabelItemAdapter()
+    private var keywork: String = "在下"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +90,13 @@ class MainActivity : BaseActivity() {
             override fun onPick(position: Int, data: City?) {
                 textView?.text = data?.name
                 tvCityPick?.text = data?.name
+                if("深圳".equals(data?.name.toString())){
+                    keywork = "可爱"
+                }else{
+                    keywork = "在下"
+                }
                 show(msg = data?.name)
+                search(keywork)
             }
 
             override fun onLocate() {
@@ -136,7 +138,7 @@ class MainActivity : BaseActivity() {
 //        val adapter = ZhuangbiAdapter()
         recycleView?.setAdapter(adapter)
         recycleView?.setItemAnimator(DefaultItemAnimator())
-        search("在下")
+        search(keywork)
 
     }
 
