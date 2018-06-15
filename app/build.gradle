@@ -122,6 +122,9 @@ dependencies {
     //圆形图片
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
+    //logger
+    implementation 'com.orhanobut:logger:2.2.0'
+
 
 }
 repositories {

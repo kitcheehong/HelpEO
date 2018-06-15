@@ -6,6 +6,7 @@ import android.os.Handler
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,6 +17,7 @@ import com.kitchee.app.helpeo.base.BaseActivity
 import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
 import com.kitchee.app.helpeo.utils.StatusBarUtils
+import com.orhanobut.logger.Logger
 import com.youth.banner.Banner
 import com.zaaach.citypicker.CityPicker
 import com.zaaach.citypicker.adapter.OnPickListener
@@ -162,6 +164,7 @@ class MainActivity : BaseActivity() {
                     adapter.setImages(zhuangbiImgs)
                     disposable?.dispose()
                 }) { Toast.makeText(this, "数据加载失败", Toast.LENGTH_SHORT).show() }
+
     }
 
 }

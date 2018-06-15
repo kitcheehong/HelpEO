@@ -1,11 +1,15 @@
 package com.kitchee.app.helpeo.testRxJava;
 
 import android.app.Activity;
+import android.graphics.Movie;
+import android.net.Network;
 import android.view.View;
 import android.widget.Toast;
 
+import com.kitchee.app.helpeo.bean.HotMovieBean;
 import com.kitchee.app.helpeo.bean.ZhuangbiImg;
 import com.kitchee.app.helpeo.network.NetWork;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -53,6 +57,7 @@ public class MyHandler {
                 .subscribe(new Consumer<List<ZhuangbiImg>>() {
                     @Override
                     public void accept(List<ZhuangbiImg> zhuangbiImgs) throws Exception {
+                        Logger.d(zhuangbiImgs);
                         adapter.setImages(zhuangbiImgs);
                         removeDisposble();
                     }
@@ -62,6 +67,27 @@ public class MyHandler {
                         Toast.makeText(activity, "数据加载失败", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+//        disposable = NetWork.getTop250Api().getTopMovie(0,10)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<HotMovieBean>() {
+//                    @Override
+//                    public void accept(HotMovieBean movie) throws Exception {
+//                        Logger.d(movie.getTitle());
+//                        Logger.d(movie.getCount());
+//                        Logger.d(movie.getTotal());
+//                        Logger.d(movie.getSubjects());
+//                        Logger.d(movie.getSubjects().toArray());
+//
+//                        removeDisposble();
+//                    }
+//                }, new Consumer<Throwable>() {
+//                    @Override
+//                    public void accept(Throwable throwable) throws Exception {
+//                        Toast.makeText(activity, "数据加载失败", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 
 

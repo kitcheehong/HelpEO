@@ -1,5 +1,7 @@
 package com.kitchee.app.helpeo.network.api;
 
+import android.graphics.Movie;
+
 import com.kitchee.app.helpeo.bean.ZhuangbiImg;
 
 import java.util.List;
@@ -17,4 +19,5 @@ import retrofit2.http.Query;
 public interface ZhuangbiApi {
     @GET("search")
     Observable<List<ZhuangbiImg>>search(@Query("q") String query);
+
 }

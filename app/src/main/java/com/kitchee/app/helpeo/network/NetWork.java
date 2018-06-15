@@ -1,5 +1,6 @@
 package com.kitchee.app.helpeo.network;
 
+import com.kitchee.app.helpeo.network.api.Top250Api;
 import com.kitchee.app.helpeo.network.api.ZhuangbiApi;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetWork {
     private static ZhuangbiApi zhuangbiApi;
+    private static Top250Api top250Api;
     private static OkHttpClient okHttpClient = new OkHttpClient();
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJava2CallAdapterFactory.create();
@@ -36,6 +38,19 @@ public class NetWork {
             zhuangbiApi = retrofit.create(ZhuangbiApi.class);
         }
         return zhuangbiApi;
+    }
+
+    public static Top250Api getTop250Api(){
+        if(top250Api == null){
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(okHttpClient)
+                    .baseUrl("https://api.douban.com/v2/movie/")
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .build();
+            top250Api = retrofit.create(Top250Api.class);
+        }
+        return top250Api;
     }
 
 
