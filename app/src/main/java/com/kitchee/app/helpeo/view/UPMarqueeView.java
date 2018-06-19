@@ -7,7 +7,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
 
-
 import com.kitchee.app.helpeo.R;
 
 import java.util.List;

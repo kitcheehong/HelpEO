@@ -1,7 +1,5 @@
 package com.kitchee.app.helpeo.network.api;
 
-import android.graphics.Movie;
-
 import com.kitchee.app.helpeo.bean.HotMovieBean;
 
 import io.reactivex.Observable;

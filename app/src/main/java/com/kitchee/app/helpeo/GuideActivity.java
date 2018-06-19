@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.kitchee.app.helpeo.base.BaseActivity;
-
 import com.kitchee.app.helpeo.databinding.ActivityGuideBinding;
 import com.kitchee.app.helpeo.utils.CommonUtil;
 import com.kitchee.app.helpeo.utils.PerfectClickListener;

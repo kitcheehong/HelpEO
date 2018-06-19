@@ -7,8 +7,6 @@ import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 
-import org.jetbrains.annotations.NonNls;
-
 /**
  * Created by kitchee on 2018/6/20.
  * 在相关Activity中的onCreate方法中调用一下来进行屏幕的适配

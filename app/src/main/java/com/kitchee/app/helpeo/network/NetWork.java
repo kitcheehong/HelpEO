@@ -3,11 +3,7 @@ package com.kitchee.app.helpeo.network;
 import com.kitchee.app.helpeo.network.api.Top250Api;
 import com.kitchee.app.helpeo.network.api.ZhuangbiApi;
 
-import java.io.IOException;
-
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Response;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;

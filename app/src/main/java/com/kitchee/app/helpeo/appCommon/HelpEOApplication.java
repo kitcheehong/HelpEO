@@ -5,10 +5,7 @@ import android.support.multidex.MultiDex;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
-import com.orhanobut.logger.LogcatLogStrategy;
 import com.orhanobut.logger.PrettyFormatStrategy;
-
-import java.util.logging.Logger;
 
 /**
  * Created by kitchee on 2018/5/30.

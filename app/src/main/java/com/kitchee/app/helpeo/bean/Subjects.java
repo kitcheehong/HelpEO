@@ -1,7 +1,5 @@
 package com.kitchee.app.helpeo.bean;
 
-import android.databinding.ObservableField;
-
 /**
  * Created by kitchee on 2018/6/11.
  * desc :

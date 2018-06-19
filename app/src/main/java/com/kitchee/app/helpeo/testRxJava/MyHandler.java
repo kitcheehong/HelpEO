@@ -1,20 +1,14 @@
 package com.kitchee.app.helpeo.testRxJava;
 
 import android.app.Activity;
-import android.graphics.Movie;
-import android.net.Network;
-import android.view.View;
 import android.widget.Toast;
 
-import com.kitchee.app.helpeo.bean.HotMovieBean;
 import com.kitchee.app.helpeo.bean.ZhuangbiImg;
 import com.kitchee.app.helpeo.network.NetWork;
 import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
-import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;

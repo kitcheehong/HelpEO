@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kitchee.app.helpeo.bean.ZhuangbiImg;
-import com.kitchee.app.helpeo.testRxJava.ZhuangbiAdapter;
 
 import java.util.List;
 

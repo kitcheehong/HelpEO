@@ -6,7 +6,6 @@ import android.os.Handler
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
@@ -14,12 +13,10 @@ import com.kitchee.app.helpeo.appCommon.GlideImageLoader
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
 import com.kitchee.app.helpeo.bean.HeadLineNews
-import com.kitchee.app.helpeo.display.ScreenAdaption
 import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
 import com.kitchee.app.helpeo.utils.StatusBarUtils
 import com.kitchee.app.helpeo.view.UPMarqueeView
-import com.orhanobut.logger.Logger
 import com.youth.banner.Banner
 import com.zaaach.citypicker.CityPicker
 import com.zaaach.citypicker.adapter.OnPickListener
@@ -30,7 +27,7 @@ import com.zaaach.citypicker.model.LocatedCity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.util.ArrayList
+import java.util.*
 
 
 class MainActivity : BaseActivity() {

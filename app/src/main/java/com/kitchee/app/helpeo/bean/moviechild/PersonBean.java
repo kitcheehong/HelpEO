@@ -3,7 +3,6 @@ package com.kitchee.app.helpeo.bean.moviechild;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-
 import com.kitchee.app.helpeo.BR;
 import com.kitchee.app.helpeo.network.ParamNames;
 

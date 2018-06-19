@@ -1,8 +1,5 @@
 package com.kitchee.app.helpeo.bean;
 
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableField;
-
 import java.util.List;
 
 /**
