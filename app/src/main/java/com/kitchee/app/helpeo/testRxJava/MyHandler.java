@@ -40,7 +40,7 @@ public class MyHandler {
     }
     /**取消加载数据**/
     public void onClickCancel(){
-
+        removeDisposble();
     }
 
     public void removeDisposble(){

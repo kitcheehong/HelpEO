@@ -8,8 +8,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.kitchee.app.helpeo.R;
+import com.kitchee.app.helpeo.appCommon.HelpEOApplication;
 import com.kitchee.app.helpeo.base.BaseActivity;
 import com.kitchee.app.helpeo.databinding.ActivityRxjavaTestBinding;
+import com.kitchee.app.helpeo.display.ScreenAdaption;
 
 /**
  * Created by kitchee on 2018/6/5.
@@ -29,7 +31,7 @@ public class RxJavaTextActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setSwipeBackEnable(true);
         dataBinding = DataBindingUtil.setContentView(this,R.layout.activity_rxjava_test);
-
+        ScreenAdaption.setCustomDensity(this, HelpEOApplication.helpEOApplication,360);
         myHandler = new MyHandler(this);
         dataBinding.setMyHandler(myHandler);
 
@@ -41,6 +43,8 @@ public class RxJavaTextActivity extends BaseActivity {
 
         myHandler.setAdapter(adapter);
     }
+
+
 
     @Override
     protected void onDestroy() {

@@ -7,16 +7,18 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.*
 import com.kitchee.app.helpeo.appCommon.GlideImageLoader
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
+import com.kitchee.app.helpeo.bean.HeadLineNews
+import com.kitchee.app.helpeo.display.ScreenAdaption
 import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
 import com.kitchee.app.helpeo.utils.StatusBarUtils
+import com.kitchee.app.helpeo.view.UPMarqueeView
 import com.orhanobut.logger.Logger
 import com.youth.banner.Banner
 import com.zaaach.citypicker.CityPicker
@@ -28,6 +30,7 @@ import com.zaaach.citypicker.model.LocatedCity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import java.util.ArrayList
 
 
 class MainActivity : BaseActivity() {
@@ -36,15 +39,21 @@ class MainActivity : BaseActivity() {
     protected var disposable: Disposable? = null
     private val adapter: LabelItemAdapter = LabelItemAdapter()
     private var keywork: String = "在下"
+    internal var mHeadLineNews: List<HeadLineNews> = ArrayList()
+    internal var views: MutableList<View> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        ScreenAdaption.setCustomDensity(this, HelpEOApplication.helpEOApplication, 360f)
         val textView: TextView? = findViewById(R.id.tv_show) as TextView?
         val tvCityPick:TextView? = findViewById(R.id.addr_sel) as TextView?
         val editText:EditText? = findViewById(R.id.cwet_edit) as EditText?
         val ivScan:ImageView? = findViewById(R.id.scan) as ImageView?
         val recycleView:RecyclerView? = findViewById(R.id.recycleView) as RecyclerView?
+        val itemRecycle:RecyclerView? = findViewById(R.id.hot_recycler_view) as RecyclerView?
+        val upMarqueeView: UPMarqueeView? = findViewById(R.id.upview1) as UPMarqueeView?
+
         setSwipeBackEnable(true)
 
         StatusBarUtils.setTranslucentStatusBar(this, false)
@@ -142,6 +151,14 @@ class MainActivity : BaseActivity() {
         recycleView?.setItemAnimator(DefaultItemAnimator())
         search(keywork)
 
+        if (upMarqueeView != null) {
+            initHeadlineNewsView(upMarqueeView)
+        }
+    }
+
+    private fun initHeadlineNewsView(upView: UPMarqueeView) {
+        setView()
+        upView.setViews(views)
     }
 
     fun show(msg: String?) {
@@ -165,6 +182,52 @@ class MainActivity : BaseActivity() {
                     disposable?.dispose()
                 }) { Toast.makeText(this, "数据加载失败", Toast.LENGTH_SHORT).show() }
 
+    }
+
+    /**
+     * 初始化需要循环的View
+     * 为了灵活的使用滚动的View，所以把滚动的内容让用户自定义
+     * 假如滚动的是三条或者一条，或者是其他，只需要把对应的布局，和这个方法稍微改改就可以了，
+     */
+    private fun setView() {
+        if (mHeadLineNews.size == 0) {
+            mHeadLineNews = listOf(HeadLineNews("1","约看电影-<速度8激情>","","生活"),HeadLineNews("2","陪玩游戏-<绝地求生>","","玩乐"))
+        }
+        var i = 0
+        while (i < mHeadLineNews.size) {
+            val position = i
+            //设置滚动的单个布局
+            val moreView = LayoutInflater.from(this).inflate(R.layout.item_view, null) as LinearLayout
+            //初始化布局的控件_内容view
+            val tv1 = moreView.findViewById<TextView>(R.id.tv1) as TextView
+            val tv2 = moreView.findViewById<TextView>(R.id.tv2) as TextView
+            //初始化布局的控件_标题View
+            val title1 = moreView.findViewById<TextView>(R.id.title_tv1) as TextView
+            val title2 = moreView.findViewById<TextView>(R.id.title_tv2) as TextView
+
+            moreView.findViewById<RelativeLayout>(R.id.rl).setOnClickListener(View.OnClickListener {
+                //都去到更多页面
+
+            })
+            moreView.findViewById<RelativeLayout>(R.id.rl2).setOnClickListener(View.OnClickListener {
+                //都去到更多页面
+
+            })
+            //进行对控件赋值
+            tv1.text = mHeadLineNews[i].title
+            title1.text = mHeadLineNews[i].category
+            if (mHeadLineNews.size > i + 1) {
+                //因为淘宝那儿是两条数据，但是当数据是奇数时就不需要赋值第二个，所以加了一个判断，还应该把第二个布局给隐藏掉
+                tv2.text = mHeadLineNews[i + 1].title
+                title2.text = mHeadLineNews[i].category
+            } else {
+                moreView.findViewById<RelativeLayout>(R.id.rl2).setVisibility(View.GONE)
+            }
+
+            //添加到循环滚动数组里面去
+            views.add(moreView)
+            i +=  1
+        }
     }
 
 }
