@@ -6,7 +6,6 @@ import android.os.Handler
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
@@ -19,7 +18,6 @@ import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
 import com.kitchee.app.helpeo.utils.StatusBarUtils
 import com.kitchee.app.helpeo.view.UPMarqueeView
-import com.orhanobut.logger.Logger
 import com.youth.banner.Banner
 import com.zaaach.citypicker.CityPicker
 import com.zaaach.citypicker.adapter.OnPickListener
@@ -30,7 +28,7 @@ import com.zaaach.citypicker.model.LocatedCity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.util.ArrayList
+import java.util.*
 
 
 class MainActivity : BaseActivity() {
@@ -45,7 +43,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        ScreenAdaption.setCustomDensity(this, HelpEOApplication.helpEOApplication, 360f)
+        ScreenAdaption.setCustomDensity(this, HelpEOApplication.helpEOApplication, 360f)
         val textView: TextView? = findViewById(R.id.tv_show) as TextView?
         val tvCityPick:TextView? = findViewById(R.id.addr_sel) as TextView?
         val editText:EditText? = findViewById(R.id.cwet_edit) as EditText?
@@ -191,7 +189,7 @@ class MainActivity : BaseActivity() {
      */
     private fun setView() {
         if (mHeadLineNews.size == 0) {
-            mHeadLineNews = listOf(HeadLineNews("1","约看电影-<速度8激情>","","生活"),HeadLineNews("2","陪玩游戏-<绝地求生>","","玩乐"))
+            mHeadLineNews = listOf(HeadLineNews("1","约看电影-<速度8激情>","","生活资讯"),HeadLineNews("2","陪玩游戏-<绝地求生>","","娱乐玩耍"))
         }
         var i = 0
         while (i < mHeadLineNews.size) {
