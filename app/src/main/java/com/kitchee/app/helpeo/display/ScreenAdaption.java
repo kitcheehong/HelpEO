@@ -100,5 +100,16 @@ public class ScreenAdaption {
 
     }
 
+    /**
+     * 如果Ui设计师给定px单位设计图，那么我们需要的是它的屏幕分辨率比如720 * 1280；还有dpi,比如等于320，那么density =2;因为不给出dpi
+     * 我们就无法知道它的设计稿是否按照标准设计规格来设置，先转化为dp,比如上面宽度就是360dp,高度640dp
+     */
+    public static void setDensityByWidthForPx(@NonNull Activity activity, @NonNull Application application, float widthPx, float dpi){
+        float widthDp = widthPx / dpi;
+        setCustomDensity(activity,application,widthDp);
+    }
+
+
+
 
 }
