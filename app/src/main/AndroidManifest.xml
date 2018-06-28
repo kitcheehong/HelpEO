@@ -42,6 +42,8 @@
             android:theme="@style/Translucent"/>
 
         <activity android:name=".testRxJava.RxJavaTextActivity"/>
+        <activity android:name=".PatternSettingActivity"/>
+        <activity android:name=".PatternCheckActivity"/>
     </application>
 
 </manifest>

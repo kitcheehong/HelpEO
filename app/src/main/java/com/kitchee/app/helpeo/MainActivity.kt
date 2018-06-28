@@ -127,7 +127,7 @@ class MainActivity : BaseActivity() {
                     .show();}
 
         editText?.setOnClickListener{
-            val intent = Intent(this@MainActivity, SearchActivity::class.java)
+            val intent = Intent(this@MainActivity, PatternSettingActivity::class.java)
             val location = IntArray(2)
             editText.getLocationOnScreen(location)
             intent.putExtra("x", location[0])

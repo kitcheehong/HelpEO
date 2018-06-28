@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--解锁手势属性-->
+    <declare-styleable name="GustureLockView">
+
+        <!--正常状态下圆圈的颜色-->
+        <attr name="normalColor" format="color"/>
+        <!--选中状态下圆圈的颜色-->
+        <attr name="selectColor" format="color"/>
+        <!--正确状态下圆圈的颜色-->
+        <attr name="correctColor" format="color"/>
+        <!--错误状态下圆圈的颜色-->
+        <attr name="wrongColor" format="color"/>
+        <!--连线的宽度-->
+        <attr name="lineWidth" format="dimension"/>
+
+    </declare-styleable>
+</resources>
