@@ -1,5 +1,6 @@
 package com.kitchee.app.helpeo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -26,5 +27,25 @@ public class PatternSettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pattern_setting);
         ButterKnife.bind(this);
+        gustureLockView.setOnLockListener(new GustureLockView.setLockListener() {
+            @Override
+            public void onSetLockSuccess(int type) {
+                textView.setTextColor(Color.parseColor("#2196f3"));
+                if(type == 1){
+                    textView.setText("请再次绘制解锁图案");
+                }else{
+                    textView.setText(("手势图案设置成功！"));
+
+                }
+            }
+
+            @Override
+            public void onSetLockFail(String msg) {
+
+                textView.setTextColor(Color.parseColor("#f22417"));
+                textView.setText(msg);
+            }
+        });
     }
+
 }

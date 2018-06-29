@@ -11,7 +11,7 @@ public class CircleBean {
     public float x;
     public float y;
     public float radius;
-    public boolean isSelect;
+    public int state = 0;//0:normal;1:selected;2:success;3:wrong
 
     public CircleBean(int id, float x, float y, int radius ) {
         this.id = id;

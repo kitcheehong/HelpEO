@@ -5,15 +5,15 @@
     <declare-styleable name="GustureLockView">
 
         <!--正常状态下圆圈的颜色-->
-        <attr name="normalColor" format="color"/>
+        <attr name="normalColor" format="color|reference"/>
         <!--选中状态下圆圈的颜色-->
-        <attr name="selectColor" format="color"/>
+        <attr name="selectColor" format="color|reference"/>
         <!--正确状态下圆圈的颜色-->
-        <attr name="correctColor" format="color"/>
+        <attr name="correctColor" format="color|reference"/>
         <!--错误状态下圆圈的颜色-->
-        <attr name="wrongColor" format="color"/>
+        <attr name="wrongColor" format="color|reference"/>
         <!--连线的宽度-->
-        <attr name="lineWidth" format="dimension"/>
+        <attr name="lineWidth" format="dimension|reference"/>
 
     </declare-styleable>
 </resources>
