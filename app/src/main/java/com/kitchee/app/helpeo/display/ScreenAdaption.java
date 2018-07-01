@@ -11,15 +11,13 @@ import org.jetbrains.annotations.NonNls;
 
 /**
  * Created by kitchee on 2018/6/20.
- * 在相关Activity中的onCreate方法中调用一下来进行屏幕的适配
+ * 在相关Activity中的onCreate方法中setContentView()后调用一下来进行屏幕的适配
  */
 
 public class ScreenAdaption {
 
     private static float sNonCompatDensity;
     private static float sNonCompatScaledDensity;
-    private static float defaultWidthDP = 360.0f;
-    private static float defaultHeightDP = 640.0f;
 
 
     public static void setCustomDensity(@NonNull Activity activity, @NonNull final Application application,float designWidthDP){
@@ -43,6 +41,7 @@ public class ScreenAdaption {
             });
         }
 
+        float defaultWidthDP = 360.0f;
         final float targetDensity = appDisplayMetrics.widthPixels / (designWidthDP <= 0 ? defaultWidthDP : designWidthDP);
         final float targetScaledDensity = targetDensity * (sNonCompatScaledDensity / sNonCompatDensity);
         final int targetDensityDpi = (int) (160 * targetDensity);
@@ -85,6 +84,7 @@ public class ScreenAdaption {
             });
         }
 
+        float defaultHeightDP = 640.0f;
         final float targetDensity = appDisplayMetrics.heightPixels / (designHeightDP <= 0 ? defaultHeightDP : designHeightDP);
         final float targetScaledDensity = targetDensity * (sNonCompatScaledDensity / sNonCompatDensity);
         final int targetDensityDpi = (int) (160 * targetDensity);

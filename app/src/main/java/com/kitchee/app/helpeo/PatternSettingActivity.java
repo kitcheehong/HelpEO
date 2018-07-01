@@ -2,10 +2,14 @@ package com.kitchee.app.helpeo;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.kitchee.app.helpeo.appCommon.HelpEOApplication;
+import com.kitchee.app.helpeo.display.ScreenAdaption;
 import com.kitchee.app.helpeo.view.GustureLockView;
 
 import butterknife.BindView;
@@ -27,6 +31,7 @@ public class PatternSettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pattern_setting);
         ButterKnife.bind(this);
+        ScreenAdaption.setCustomDensity(this, HelpEOApplication.helpEOApplication, 360f);
         gustureLockView.setOnLockListener(new GustureLockView.setLockListener() {
             @Override
             public void onSetLockSuccess(int type) {
@@ -35,6 +40,13 @@ public class PatternSettingActivity extends AppCompatActivity {
                     textView.setText("请再次绘制解锁图案");
                 }else{
                     textView.setText(("手势图案设置成功！"));
+                    new Handler(new Handler.Callback() {
+                        @Override
+                        public boolean handleMessage(Message msg) {
+                            onBackPressed();
+                            return false;
+                        }
+                    }).sendEmptyMessageDelayed(0,1500);
 
                 }
             }

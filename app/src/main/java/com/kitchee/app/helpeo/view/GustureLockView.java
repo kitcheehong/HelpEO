@@ -294,11 +294,13 @@ public class GustureLockView extends View {
      */
     private void setWholePathState(int state) {
 //        circlePaint.setColor(getColorByState(state));
+        // 控制实心圆圈颜色
         for (CircleBean rect : hitCircleList) {
             rect.state = (state);
         }
+        // 控制划线的颜色
         pathPaint.setColor(getColorByState(state));
-
+        // 控制外部圆圈的颜色
         if (state == Config.POINT_STATE_NORMAL) {
             outerCirclePaint.setColor(Color.TRANSPARENT);
 
@@ -415,9 +417,15 @@ public class GustureLockView extends View {
     private void clearHitData() {
         mPath.reset();
         temPath.reset();
-        hitCircleList.clear();
+
+//        circleCorPaint.reset();
+//        circleSelPaint.reset();
+//        circleWorPaint.reset();
+
         setWholePathState(Config.POINT_STATE_NORMAL);
-        invalidate();
+
+        hitCircleList.clear();
+
         postInvalidate();
 //        reset();
     }
