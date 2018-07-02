@@ -11,6 +11,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -26,7 +27,7 @@ import java.util.List;
  * desc : 手势解锁控件
  */
 
-public class GustureLockView extends View {
+public class GestureLockView extends View {
 
     // 控件宽，高
     private int mWidth;
@@ -72,15 +73,18 @@ public class GustureLockView extends View {
 
     private Canvas mCanvas;
 
-    public GustureLockView(Context context) {
+    private StringBuilder psb = new StringBuilder();
+
+
+    public GestureLockView(Context context) {
         this(context, null);
     }
 
-    public GustureLockView(Context context, @Nullable AttributeSet attrs) {
+    public GestureLockView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public GustureLockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public GestureLockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         // 根据属性初始化
         initAttrs(attrs);
@@ -92,11 +96,8 @@ public class GustureLockView extends View {
     private void initData() {
         int width;
         circleList = new ArrayList();
-        if (mWidth > mHeight) {
-            width = mHeight;
-        } else {
-            width = mWidth;
-        }
+        if (mWidth > mHeight) width = mHeight;
+        else width = mWidth;
         for (int i = 0; i < 9; i++) {
             float x = width / 3 / 2 + (width / 3) * (i % 3);
             float y = width / 3 / 2 + (width / 3) * (i / 3);
@@ -148,13 +149,12 @@ public class GustureLockView extends View {
 
     private void initAttrs(AttributeSet attrs) {
         if (attrs != null) {
-            TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.GustureLockView);
-            normalColor = array.getColor(R.styleable.GustureLockView_normalColor, Config.defaultNormalColor);
-            selectColor = array.getColor(R.styleable.GustureLockView_selectColor, Config.defaultSelectColor);
-            correctColor = array.getColor(R.styleable.GustureLockView_correctColor, Config.defaultCorrectColor);
-            wrongColor = array.getColor(R.styleable.GustureLockView_wrongColor, Config.defaultWrongColor);
-            lineWidth = (int) array.getDimension(R.styleable.GustureLockView_lineWidth, Config.defaultLineWidth);
-//            lineWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, R.styleable.GustureLockView_lineWidth, getResources().getDisplayMetrics());
+            TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.GestureLockView);
+            normalColor = array.getColor(R.styleable.GestureLockView_normalColor, Config.defaultNormalColor);
+            selectColor = array.getColor(R.styleable.GestureLockView_selectColor, Config.defaultSelectColor);
+            correctColor = array.getColor(R.styleable.GestureLockView_correctColor, Config.defaultCorrectColor);
+            wrongColor = array.getColor(R.styleable.GestureLockView_wrongColor, Config.defaultWrongColor);
+            lineWidth = (int) array.getDimension(R.styleable.GestureLockView_lineWidth, Config.defaultLineWidth);
             array.recycle();
         }
     }
@@ -181,7 +181,7 @@ public class GustureLockView extends View {
         super.onDraw(canvas);
         mCanvas = canvas;
         for (int i = 0; i < circleList.size(); i++) {
-            CircleBean circleBean = (CircleBean) circleList.get(i);
+            CircleBean circleBean =  circleList.get(i);
             drawCircle(circleBean, canvas);
         }
 
@@ -225,7 +225,7 @@ public class GustureLockView extends View {
         float currY = event.getY();
         CircleBean circleBean = null;
         for (int i = 0; i < circleList.size(); i++) {
-            circleBean = (CircleBean) circleList.get(i);
+            circleBean = circleList.get(i);
             if (circleBean.legal(currX, currY)) {
                 break;
             } else {
@@ -340,8 +340,15 @@ public class GustureLockView extends View {
     private void checkPathLegal() {
         if (hitCircleList.size() > 3) {
             if (isFirstSetting) {
+                psb.setLength(0);
+                for (CircleBean cb : hitCircleList){
+                    psb.append(cb.id);
 
-                lockListener.onSetLockSuccess(1);
+                }
+                if(lockListener != null){
+                    Log.d("kitchee","检测psb = "+ psb);
+                    lockListener.onSetLockSuccess(1,"请再次绘制解锁图案",psb);
+                }
                 if (firstCircleList == null) {
                     firstCircleList = new ArrayList<>();
                 } else {
@@ -364,19 +371,24 @@ public class GustureLockView extends View {
 
         if (hitCircleList.size() == firstCircleList.size()) {
             boolean isSuccess = false;
+            psb.setLength(0);
             for (int i = 0; i < hitCircleList.size(); i++) {
                 if (!hitCircleList.get(i).equals(firstCircleList.get(i))) {
                     setWholePathState(Config.POINT_STATE_WRONG);
                     lockListener.onSetLockFail("与上次绘制不一致，请重新绘制");
                     isSuccess = false;
+//                    psb.delete(0,psb.length());
+                    psb.setLength(0);
                     break;
                 } else {
+                    psb.append(hitCircleList.get(i).id);
                     isSuccess = true;
                 }
             }
             if (isSuccess) {
                 setWholePathState(Config.POINT_STATE_SUCCESS);
-                lockListener.onSetLockSuccess(2);
+                Log.d("kitchee","设置psb = "+ psb);
+                lockListener.onSetLockSuccess(2,"手势图案设置成功！",psb);
             }
         } else {
             setWholePathState(Config.POINT_STATE_WRONG);
@@ -396,13 +408,21 @@ public class GustureLockView extends View {
     }
 
     public interface setLockListener {
-        void onSetLockSuccess(int type);
+        void onSetLockSuccess(int type,String msg,StringBuilder psb);
 
         void onSetLockFail(String msg);
     }
 
     public void setOnLockListener(setLockListener listener) {
         this.lockListener = listener;
+    }
+
+
+    /**
+     * 更新
+     */
+    public void updateHitSettingState(boolean isFirst){
+        this.isFirstSetting = isFirst;
     }
 
     //设置自动清除划线
@@ -418,10 +438,6 @@ public class GustureLockView extends View {
         mPath.reset();
         temPath.reset();
 
-//        circleCorPaint.reset();
-//        circleSelPaint.reset();
-//        circleWorPaint.reset();
-
         setWholePathState(Config.POINT_STATE_NORMAL);
 
         hitCircleList.clear();
@@ -434,4 +450,12 @@ public class GustureLockView extends View {
         setEnabled(false);
         this.postDelayed(this.clearAction, Config.defaultDelayTime);
     }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        this.removeCallbacks(clearAction);
+        super.onDetachedFromWindow();
+    }
+
+
 }

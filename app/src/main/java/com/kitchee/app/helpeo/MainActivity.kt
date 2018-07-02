@@ -16,6 +16,7 @@ import com.kitchee.app.helpeo.bean.HeadLineNews
 import com.kitchee.app.helpeo.display.ScreenAdaption
 import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
+import com.kitchee.app.helpeo.utils.SharePreferencesUtil
 import com.kitchee.app.helpeo.utils.StatusBarUtils
 import com.kitchee.app.helpeo.view.UPMarqueeView
 import com.youth.banner.Banner
@@ -127,7 +128,14 @@ class MainActivity : BaseActivity() {
                     .show();}
 
         editText?.setOnClickListener{
-            val intent = Intent(this@MainActivity, PatternSettingActivity::class.java)
+             val psw = SharePreferencesUtil.getInstance().saveGesturePassword;
+            val intent:Intent
+            if(psw == null){
+                intent = Intent(this@MainActivity, PatternSettingActivity::class.java)
+            }else{
+                intent = Intent(this@MainActivity,PatternCheckActivity::class.java)
+            }
+
             val location = IntArray(2)
             editText.getLocationOnScreen(location)
             intent.putExtra("x", location[0])

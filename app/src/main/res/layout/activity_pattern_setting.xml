@@ -16,7 +16,7 @@
         android:layout_marginTop="80dp"
         />
     
-    <com.kitchee.app.helpeo.view.GustureLockView
+    <com.kitchee.app.helpeo.view.GestureLockView
         android:id="@+id/gusture_lock_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,11 +31,14 @@
         />
 
     <LinearLayout
+        android:id="@+id/linearLayout_container"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
+        android:visibility="gone"
         >
         <TextView
+            android:id="@+id/forget_psw"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -45,6 +48,7 @@
             android:gravity="center"
             />
         <TextView
+            android:id="@+id/switch_login"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

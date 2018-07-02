@@ -6,11 +6,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication;
 import com.kitchee.app.helpeo.display.ScreenAdaption;
-import com.kitchee.app.helpeo.view.GustureLockView;
+import com.kitchee.app.helpeo.utils.SecurityUtil;
+import com.kitchee.app.helpeo.utils.SharePreferencesUtil;
+import com.kitchee.app.helpeo.view.GestureLockView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +25,7 @@ import butterknife.ButterKnife;
 
 public class PatternSettingActivity extends AppCompatActivity {
     @BindView(R.id.gusture_lock_view)
-    GustureLockView gustureLockView;
+    GestureLockView gestureLockView;
     @BindView(R.id.text)
     TextView textView;
 
@@ -32,14 +35,19 @@ public class PatternSettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pattern_setting);
         ButterKnife.bind(this);
         ScreenAdaption.setCustomDensity(this, HelpEOApplication.helpEOApplication, 360f);
-        gustureLockView.setOnLockListener(new GustureLockView.setLockListener() {
+        gestureLockView.setOnLockListener(new GestureLockView.setLockListener() {
             @Override
-            public void onSetLockSuccess(int type) {
+            public void onSetLockSuccess(int type,String mesg,StringBuilder psb) {
                 textView.setTextColor(Color.parseColor("#2196f3"));
                 if(type == 1){
-                    textView.setText("请再次绘制解锁图案");
+                    textView.setText(mesg);
                 }else{
-                    textView.setText(("手势图案设置成功！"));
+                    textView.setText(mesg);
+                    try {
+                        saveToStorage(psb.toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     new Handler(new Handler.Callback() {
                         @Override
                         public boolean handleMessage(Message msg) {
@@ -58,6 +66,12 @@ public class PatternSettingActivity extends AppCompatActivity {
                 textView.setText(msg);
             }
         });
+    }
+
+    private void saveToStorage(String gesturePwd) throws Exception {
+        Log.d("kitchee","gesturePwd = "+ gesturePwd);
+        final String encryptPwd = SecurityUtil.encrypt(gesturePwd);
+        SharePreferencesUtil.getInstance().putGesturePsw(encryptPwd);
     }
 
 }

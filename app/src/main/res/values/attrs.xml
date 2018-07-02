@@ -2,7 +2,7 @@
 <resources>
 
     <!--解锁手势属性-->
-    <declare-styleable name="GustureLockView">
+    <declare-styleable name="GestureLockView">
 
         <!--正常状态下圆圈的颜色-->
         <attr name="normalColor" format="color|reference"/>
