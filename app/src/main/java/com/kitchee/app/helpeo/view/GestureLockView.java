@@ -419,7 +419,7 @@ public class GestureLockView extends View {
 
 
     /**
-     * 更新
+     * 更新设置次数状态，主要是方便校验页面只使用successType = 1
      */
     public void updateHitSettingState(boolean isFirst){
         this.isFirstSetting = isFirst;

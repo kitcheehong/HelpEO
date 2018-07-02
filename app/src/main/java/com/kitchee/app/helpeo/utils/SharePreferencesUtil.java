@@ -1,5 +1,6 @@
 package com.kitchee.app.helpeo.utils;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -53,6 +54,14 @@ public class SharePreferencesUtil {
 
     public int getInputPswTimes(){
         return mSharePreferences.getInt(INPUT_GESTURE_PASSWORD_TIMES,0);
+    }
+
+    public void clear(String name) {
+        SharedPreferences preferences = HelpEOApplication.getInstance().getApplicationContext().getSharedPreferences(name, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+
+        editor.commit();
     }
 
 
