@@ -8,4 +8,8 @@
     <color name="fandehao_toutiao_item_remen">#ff0000</color>
     <color name="fandehao_toutiao_bg">#fcfcfc</color>
     <color name="fdhao_category">#ff7700</color>
+
+    <color name="color_cccccc">#ccc</color>
+    <color name="white">#fff</color>
+    <color name="app_theme_color">#ffd200</color>
 </resources>

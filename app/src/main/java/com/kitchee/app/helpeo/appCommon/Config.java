@@ -23,4 +23,10 @@ public class Config {
     public static final int POINT_STATE_SUCCESS = 2; // 正确状态
 
     public static final int POINT_STATE_WRONG = 3; // 错误状态
+
+    /** 图灵机器人API */
+
+    public static final String URL_KEY = "http://www.tuling123.com/openapi/api";
+
+    public static final String APP_KEY = "04e2d6478e9b4f5da308349c162b277b";//此处是你申请的Apikey
 }
