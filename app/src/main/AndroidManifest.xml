@@ -46,6 +46,8 @@
         <activity android:name=".testRxJava.RxJavaTextActivity"/>
         <activity android:name=".PatternSettingActivity"/>
         <activity android:name=".PatternCheckActivity"/>
+        <activity android:name=".customservicerobot.AutoChatActivity"
+            />
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import com.kitchee.app.helpeo.appCommon.GlideImageLoader
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
 import com.kitchee.app.helpeo.bean.HeadLineNews
+import com.kitchee.app.helpeo.customservicerobot.AutoChatActivity
 import com.kitchee.app.helpeo.display.ScreenAdaption
 import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
@@ -145,7 +146,7 @@ class MainActivity : BaseActivity() {
         }
 
         ivScan?.setOnClickListener{
-            val intent = Intent(this@MainActivity,RxJavaTextActivity::class.java)
+            val intent = Intent(this@MainActivity,AutoChatActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.screen_zoom_in, R.anim.screen_zoom_out)
         }

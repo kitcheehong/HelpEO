@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/tv_chat_time"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:textColor="@color/friend_time"
+        android:textSize="11sp" />
+
+    <RelativeLayout
+        android:id="@+id/layout_chat_sender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_chat_time"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/img_chat_sender_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_chat_sender_message"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:maxWidth="240dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_chat_sender_head"
+            android:background="@drawable/chat_receipt_bg"
+            android:lineSpacingExtra="2dp"
+            android:layout_centerVertical="true"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="8dp"
+            android:textColor="@color/friend_name_new"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_chat_my"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_chat_time"
+        android:visibility="gone"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:id="@+id/img_chat_my_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/tv_chat_my_message"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="5dp"
+            android:maxWidth="240dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/img_chat_my_head"
+            android:background="@drawable/chat_my_bg_yellow"
+            android:lineSpacingExtra="2dp"
+            android:layout_centerVertical="true"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/friend_name_new"
+            android:textSize="14sp" />
+        <!--common_white-->
+    </RelativeLayout>
+
+</RelativeLayout>
