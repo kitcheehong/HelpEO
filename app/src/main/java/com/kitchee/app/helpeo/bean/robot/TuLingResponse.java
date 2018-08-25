@@ -8,9 +8,9 @@ import java.util.ArrayList;
  */
 
 public class TuLingResponse {
-
+    private Object emotion;
     private intent intent;
-    private ArrayList<Object> result;
+    private ArrayList<results> results;
 
     public TuLingResponse() {
     }
@@ -23,11 +23,20 @@ public class TuLingResponse {
         this.intent = intent;
     }
 
-    public ArrayList getResult() {
-        return result;
+    public ArrayList getResults() {
+        return results;
     }
 
-    public void setResult(ArrayList result) {
-        this.result = result;
+    public void setResults(ArrayList result) {
+        this.results = result;
+    }
+
+    @Override
+    public String toString() {
+        return "TuLingResponse{" +
+                "emotion=" + emotion +
+                ", intent=" + intent +
+                ", results=" + results +
+                '}';
     }
 }

@@ -9,7 +9,7 @@ import com.kitchee.app.helpeo.bean.ChatMessage;
 
 public interface IAutoChatModel {
 
-    public void sendMessage(ChatMessage chatMessage);
+    public void sendMessage(ChatMessage chatMessage,OnRobotResponseListener listener);
 
     public ChatMessage receiveMessage();
 }

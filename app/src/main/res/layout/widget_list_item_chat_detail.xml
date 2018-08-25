@@ -45,6 +45,7 @@
             android:paddingLeft="16dp"
             android:paddingRight="8dp"
             android:textColor="@color/friend_name_new"
+            android:autoLink="all"
             android:textSize="14sp" />
     </RelativeLayout>
 
@@ -79,6 +80,7 @@
             android:paddingLeft="8dp"
             android:paddingRight="16dp"
             android:textColor="@color/friend_name_new"
+            android:autoLink="all"
             android:textSize="14sp" />
         <!--common_white-->
     </RelativeLayout>

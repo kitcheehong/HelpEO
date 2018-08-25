@@ -6,6 +6,7 @@ import com.kitchee.app.helpeo.bean.robot.TuLingResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
@@ -16,4 +17,8 @@ import retrofit2.http.POST;
 public interface RobotResponseApi {
     @POST("v2")
     Observable<TuLingResponse> sendMessage(@Body TuLingRequest tuLingRequest);
+
+    @FormUrlEncoded
+    @POST("v2")
+    Observable<TuLingResponse> sendMessageForForm(@Body TuLingRequest tuLingRequest);
 }

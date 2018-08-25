@@ -58,7 +58,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
                 ( holder).layoutMy.setVisibility(View.GONE);
                 ( holder).layoutSender.setVisibility(View.VISIBLE);
                 ( holder).tvSenderMessage.setText(chatMessage.getMessage());
-                ( holder).imgSendHead.setImageResource(android.R.mipmap.sym_def_app_icon);
+                ( holder).imgSendHead.setImageResource(R.mipmap.kefu);
             } else {
                 // 发送出去的消息
                 ( holder).layoutSender.setVisibility(View.GONE);
@@ -68,7 +68,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
                 ( holder).imgMyHead.setBackgroundResource(0);
                 ( holder).imgMyHead.setImageResource(0);
 
-                ( holder).imgMyHead.setImageResource(R.mipmap.kefu);
+                ( holder).imgMyHead.setImageResource(R.mipmap.ic_launcher_round);
 //                ImageLoaderUtils.displayImage(myIcon, ( holder).imgMyHead, null);
 //                new GlideImageLoader().displayImage(context,uIcon,( holder).imgMyHead);
             }
@@ -86,6 +86,14 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
             datas = new ArrayList<>();
         }
         this.list = datas;
+        notifyDataSetChanged();
+    }
+
+    public void addData(ChatMessage chatMessage){
+        if (chatMessage != null){
+            this.list.add(chatMessage);
+        }
+        notifyItemInserted(list.size() - 1);
     }
 
     class ChatHolder extends RecyclerView.ViewHolder {

@@ -7,4 +7,11 @@ package com.kitchee.app.helpeo.bean.robot;
 
 public class perception {
     public inputText inputText;
+
+    @Override
+    public String toString() {
+        return "perception{" +
+                "inputText=" + inputText +
+                '}';
+    }
 }

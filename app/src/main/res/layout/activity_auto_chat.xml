@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@mipmap/img_transition_default"
+        android:contentDescription="@null"
         />
 
 
@@ -20,6 +21,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_below="@+id/title_bar"
+        android:layout_above="@+id/chat_layout_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -51,7 +53,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="11dp"
             android:background="@drawable/shape_btn_yw"
-            android:enabled="false"
+            android:enabled="true"
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"

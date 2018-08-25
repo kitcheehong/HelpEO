@@ -8,4 +8,12 @@ package com.kitchee.app.helpeo.bean.robot;
 public class userInfo {
     public String apiKey;
     public String userId;
+
+    @Override
+    public String toString() {
+        return "userInfo{" +
+                "apiKey='" + apiKey + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }

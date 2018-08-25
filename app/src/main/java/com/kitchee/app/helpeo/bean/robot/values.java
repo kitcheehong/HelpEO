@@ -1,16 +1,16 @@
 package com.kitchee.app.helpeo.bean.robot;
 
 /**
- * Created by Administrator on 2018/8/24.
- * desc:
+ * Created by kitchee on 2018/8/25.
+ * Desc:
  */
 
-public class inputText {
+public class values {
     public String text;
 
     @Override
     public String toString() {
-        return "inputText{" +
+        return "values{" +
                 "text='" + text + '\'' +
                 '}';
     }

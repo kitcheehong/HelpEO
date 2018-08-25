@@ -18,6 +18,15 @@ public class intent {
     public  parameters parameters;
 
 
+    @Override
+    public String toString() {
+        return "intent{" +
+                "code=" + code +
+                ", intentName='" + intentName + '\'' +
+                ", actionName='" + actionName + '\'' +
+                ", parameters=" + parameters +
+                '}';
+    }
 }
 
 class parameters{}

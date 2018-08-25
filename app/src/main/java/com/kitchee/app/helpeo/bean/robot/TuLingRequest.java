@@ -61,4 +61,13 @@ public class TuLingRequest {
     public void setUserInfo(com.kitchee.app.helpeo.bean.robot.userInfo userInfo) {
         this.userInfo = userInfo;
     }
+
+    @Override
+    public String toString() {
+        return "TuLingRequest{" +
+                "reqType=" + reqType +
+                ", perception=" + perception +
+                ", userInfo=" + userInfo +
+                '}';
+    }
 }

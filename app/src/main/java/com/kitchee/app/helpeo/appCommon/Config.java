@@ -26,8 +26,9 @@ public class Config {
 
     /** 图灵机器人API */
 
-    public static final String URL_KEY = "http://www.tuling123.com/openapi/api";
+    public static final String URL_KEY = "http://openapi.tuling123.com/openapi/api/";
 //http://openapi.tuling123.com/openapi/api/v2
+    //http://www.tuling123.com/openapi/api
     public static final String APP_KEY = "04e2d6478e9b4f5da308349c162b277b";//此处是你申请的Apikey
 
     public static final int MESSAGE_TYPE_SEND = 1;
