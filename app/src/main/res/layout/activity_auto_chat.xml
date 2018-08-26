@@ -42,7 +42,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="11dp"
             android:background="@mipmap/chat_voice"
-            android:enabled="false"
+            android:enabled="true"
             android:visibility="visible" />
 
         <Button
