@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HelpEO</string>
     <string name="skip">跳过</string>
-
+    <string name="guess_your_question">猜你想问：...</string>
     <string name="app_id">5b8187e5</string>
     <!-- 听写 -->
     <string name="text_begin">请开始说话…</string>
@@ -17,4 +17,8 @@
     <string name="text_show_contacts">上传联系人/词表显示</string>
     <string name="text_show_iat_result">听写结果显示</string>
 
+    <!--登录-->
+    <string name="register">注册</string>
+    <string name="forget_pwd">忘记密码？</string>
+    <string name="login">登录</string>
 </resources>

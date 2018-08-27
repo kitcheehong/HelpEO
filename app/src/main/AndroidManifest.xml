@@ -61,6 +61,7 @@
         <activity android:name=".PatternCheckActivity"/>
         <activity android:name=".customservicerobot.AutoChatActivity"
             />
+        <activity android:name=".login.LoginActivity"/>
 
         <!-- 移动统计分析 -->
         <meta-data

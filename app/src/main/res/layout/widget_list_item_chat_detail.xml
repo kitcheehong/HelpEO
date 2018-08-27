@@ -39,7 +39,6 @@
             android:layout_toRightOf="@id/img_chat_sender_head"
             android:background="@drawable/chat_receipt_bg"
             android:lineSpacingExtra="2dp"
-            android:layout_centerVertical="true"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:paddingLeft="16dp"
@@ -47,6 +46,17 @@
             android:textColor="@color/friend_name_new"
             android:autoLink="all"
             android:textSize="14sp" />
+
+        <ViewStub
+            android:id="@+id/viewStub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_chat_sender_message"
+            android:layout_alignParentBottom="true"
+            android:layout="@layout/widget_list_item_questions"
+
+            />
+
     </RelativeLayout>
 
     <RelativeLayout
