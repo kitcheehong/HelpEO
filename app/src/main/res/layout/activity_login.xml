@@ -30,6 +30,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@mipmap/user_icon"
+            android:contentDescription="@null"
             />
         <View
             android:layout_width="2dp"
@@ -47,14 +48,18 @@
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:background="@null"
+            android:maxLength="11"
+            android:inputType="number"
             />
 
         <ImageView
+            android:id="@+id/iv_clear_input"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:src="@mipmap/clean_edit"
+            android:contentDescription="@null"
             />
     </LinearLayout>
 
@@ -75,6 +80,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@mipmap/password_icon"
+            android:contentDescription="@null"
             />
         <View
             android:layout_width="2dp"
@@ -92,6 +98,8 @@
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:background="@null"
+            android:maxLength="16"
+            android:inputType="text"
             />
 
         <ImageView
@@ -101,6 +109,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:src="@mipmap/show_psw"
+            android:contentDescription="@null"
             />
     </LinearLayout>
 
@@ -115,6 +124,7 @@
         >
 
         <TextView
+            android:id="@+id/register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"
@@ -125,6 +135,7 @@
             />
 
         <TextView
+            android:id="@+id/forget_psw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forget_pwd"
@@ -137,6 +148,7 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/login_btn"
         android:layout_below="@+id/relativeLayout_register_container"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -144,8 +156,9 @@
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:background="@drawable/selector_login_btn"
-        android:text="@string/forget_pwd"
+        android:text="@string/login"
         android:textColor="@color/white"
+        android:enabled="false"
         />
 
 

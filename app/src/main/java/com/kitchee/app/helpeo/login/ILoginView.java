@@ -16,4 +16,8 @@ public interface ILoginView {
      */
     void onLoginFailRefresh();
 
+    void showProgress();
+
+    void hideProgress();
+
 }
