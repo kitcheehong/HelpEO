@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--解锁手势属性-->
+    <declare-styleable name="GestureLockView">
+
+        <!--正常状态下圆圈的颜色-->
+        <attr name="normalColor" format="color|reference"/>
+        <!--选中状态下圆圈的颜色-->
+        <attr name="selectColor" format="color|reference"/>
+        <!--正确状态下圆圈的颜色-->
+        <attr name="correctColor" format="color|reference"/>
+        <!--错误状态下圆圈的颜色-->
+        <attr name="wrongColor" format="color|reference"/>
+        <!--连线的宽度-->
+        <attr name="lineWidth" format="dimension|reference"/>
+
+    </declare-styleable>
+</resources>

@@ -13,8 +13,11 @@ import com.kitchee.app.helpeo.appCommon.GlideImageLoader
 import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
 import com.kitchee.app.helpeo.bean.HeadLineNews
+
+import com.kitchee.app.helpeo.customservicerobot.AutoChatActivity
+import com.kitchee.app.helpeo.display.ScreenAdaption
 import com.kitchee.app.helpeo.network.NetWork
-import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
+import com.kitchee.app.helpeo.utils.SharePreferencesUtil
 import com.kitchee.app.helpeo.utils.StatusBarUtils
 import com.kitchee.app.helpeo.view.UPMarqueeView
 import com.youth.banner.Banner
@@ -42,7 +45,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        ScreenAdaption.setCustomDensity(this, HelpEOApplication.helpEOApplication, 360f)
+        ScreenAdaption.setCustomDensity(this, HelpEOApplication.helpEOApplication, 360f)
         val textView: TextView? = findViewById(R.id.tv_show) as TextView?
         val tvCityPick:TextView? = findViewById(R.id.addr_sel) as TextView?
         val editText:EditText? = findViewById(R.id.cwet_edit) as EditText?
@@ -126,7 +129,14 @@ class MainActivity : BaseActivity() {
                     .show();}
 
         editText?.setOnClickListener{
-            val intent = Intent(this@MainActivity, SearchActivity::class.java)
+             val psw = SharePreferencesUtil.getInstance().saveGesturePassword;
+            val intent:Intent
+            if(psw == null){
+                intent = Intent(this@MainActivity, PatternSettingActivity::class.java)
+            }else{
+                intent = Intent(this@MainActivity,PatternCheckActivity::class.java)
+            }
+
             val location = IntArray(2)
             editText.getLocationOnScreen(location)
             intent.putExtra("x", location[0])
@@ -136,7 +146,7 @@ class MainActivity : BaseActivity() {
         }
 
         ivScan?.setOnClickListener{
-            val intent = Intent(this@MainActivity,RxJavaTextActivity::class.java)
+            val intent = Intent(this@MainActivity,AutoChatActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.screen_zoom_in, R.anim.screen_zoom_out)
         }
@@ -188,7 +198,7 @@ class MainActivity : BaseActivity() {
      */
     private fun setView() {
         if (mHeadLineNews.size == 0) {
-            mHeadLineNews = listOf(HeadLineNews("1","约看电影-<速度8激情>","","生活"),HeadLineNews("2","陪玩游戏-<绝地求生>","","玩乐"))
+            mHeadLineNews = listOf(HeadLineNews("1","约看电影-<速度8激情>","","生活资讯"),HeadLineNews("2","陪玩游戏-<绝地求生>","","娱乐玩耍"))
         }
         var i = 0
         while (i < mHeadLineNews.size) {

@@ -3,6 +3,8 @@ package com.kitchee.app.helpeo.appCommon;
 import android.app.Application;
 import android.support.multidex.MultiDex;
 
+import com.iflytek.cloud.SpeechUtility;
+import com.kitchee.app.helpeo.R;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.PrettyFormatStrategy;
@@ -27,6 +29,9 @@ public class HelpEOApplication extends Application {
                 .tag("kitcheehong")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
                 .build();
         com.orhanobut.logger.Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
+        // 注意： appid 必须和下载的SDK保持一致，否则会出现10407错误
+        SpeechUtility.createUtility(HelpEOApplication.this, "appid=" + getString(R.string.app_id));
+
     }
 
     public static HelpEOApplication getInstance(){

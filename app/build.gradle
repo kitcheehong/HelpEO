@@ -20,6 +20,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    defaultConfig {
+        ndk {
+            // 设置支持的 SO 库构架，注意这里要根据你的实际情况来设置
+            abiFilters "armeabi", 'x86', 'x86_64'// 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     // 开启dataBinding
     dataBinding{
         enabled = true
@@ -126,6 +139,7 @@ dependencies {
     implementation 'com.orhanobut:logger:2.2.0'
 
 
+    androidTestCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()

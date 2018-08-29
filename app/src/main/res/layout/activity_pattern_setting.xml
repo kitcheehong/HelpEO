@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:textSize="18sp"
+        android:textColor="#323232"
+        android:text="设置解锁图案"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        />
+    
+    <com.kitchee.app.helpeo.view.GestureLockView
+        android:id="@+id/gusture_lock_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:lineWidth="3dp"
+        app:normalColor="#2196f3"
+        app:correctColor="#3fffb3"
+        app:selectColor="#3f51b3"
+        app:wrongColor="#f21242"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_container"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <TextView
+            android:id="@+id/forget_psw"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="忘记手势密码"
+            android:textSize="16sp"
+            android:textColor="#2196f3"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/switch_login"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="切换登录方式"
+            android:textSize="16sp"
+            android:textColor="#2196f3"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

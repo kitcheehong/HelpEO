@@ -1,0 +1,32 @@
+<!--pages/money/integralTransfer/IntegralTransferPage.wxml-->
+<view class='integral-exchange-container'>
+  <!-- <customToast hide-toast="{{hideToast}}" toast-content="{{toastContent}}" show-time="{{showTime}}" ></customToast> -->
+  <view class='integral-container'>
+    <text class='integral-tip'>当前现金积分</text>
+    <text class='integral-num'>{{integral}}</text>
+  </view>
+
+  <view class='maxIntegral'>
+    <text class='label-tip1'>手机号</text>
+    <input class='input' maxlength='11' type='number' bindblur='inputPhoneFinish' placeholder='请输入收款会员的手机号' placeholder-style='color:#999'></input>
+  </view>
+  <view class='exchange-container'>
+    <text class='label-tip1'>积分数</text>
+    <input class='input' maxlength='8' bindinput='listenInput' bindblur='lossFocus' type='number' value='{{initValue}}' placeholder='请输入转出的积分数' placeholder-style='color:#999'></input>
+    <!-- <button class='min-btn-style' bindtap='exchangeAllIntegral'>全部兑换</button> -->
+    <image class='min-btn-style' src='http://footgps-cshj.b0.upaiyun.com/miniapps/wallet/icon_all_exchange.png' bindtap='exchangeAllIntegral'></image>
+  </view>
+
+  <view class='exchange-container'>
+    <text class='label-tip1'>验证码</text>
+    <input class='input' maxlength='8' bindinput='listenInput' bindblur='lossFocus' type='number' value='{{initValue}}' placeholder='请输入验证码' placeholder-style='color:#999'></input>
+    <view wx:if="{{showGetCode}}" class='get-code' bindtap='getValCode' >获取验证码</view>
+    <view wx:else class='show-secode'>{{countdown}}s</view>
+  </view>
+ 
+
+  <view class='btn-container'>
+    <button type='warn' bindtap='exchangeCash' style='color:white;background-color:{{disable?"#ccc":"#d92d28"}}' disabled='{{disable}}'>积分转账</button>
+  </view>
+
+</view>

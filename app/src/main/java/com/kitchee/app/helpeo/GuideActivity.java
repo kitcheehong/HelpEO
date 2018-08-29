@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.kitchee.app.helpeo.base.BaseActivity;
 import com.kitchee.app.helpeo.databinding.ActivityGuideBinding;
+import com.kitchee.app.helpeo.login.LoginActivity;
 import com.kitchee.app.helpeo.utils.CommonUtil;
 import com.kitchee.app.helpeo.utils.PerfectClickListener;
 
@@ -94,7 +95,7 @@ public class GuideActivity extends BaseActivity {
         if(myHandler != null && myHandler.hasMessages(1)){
             myHandler.removeMessages(1);
         }
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.screen_zoom_in,R.anim.screen_zoom_out);
     }

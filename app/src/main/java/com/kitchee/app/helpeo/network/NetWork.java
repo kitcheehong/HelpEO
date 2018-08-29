@@ -1,5 +1,7 @@
 package com.kitchee.app.helpeo.network;
 
+import com.kitchee.app.helpeo.appCommon.Config;
+import com.kitchee.app.helpeo.network.api.RobotResponseApi;
 import com.kitchee.app.helpeo.network.api.Top250Api;
 import com.kitchee.app.helpeo.network.api.ZhuangbiApi;
 
@@ -18,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetWork {
     private static ZhuangbiApi zhuangbiApi;
     private static Top250Api top250Api;
+    private static RobotResponseApi robotResponseApi;
     private static OkHttpClient okHttpClient = new OkHttpClient();
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJava2CallAdapterFactory.create();
@@ -47,6 +50,19 @@ public class NetWork {
             top250Api = retrofit.create(Top250Api.class);
         }
         return top250Api;
+    }
+
+    public static RobotResponseApi getRobotResponseApi(){
+        if(robotResponseApi == null){
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(okHttpClient)
+                    .baseUrl(Config.URL_KEY)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .build();
+            robotResponseApi = retrofit.create(RobotResponseApi.class);
+        }
+        return robotResponseApi;
     }
 
 

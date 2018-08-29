@@ -1,0 +1,115 @@
+/* pages/money/integralTransfer/IntegralTransferPage.wxss */
+.integral-exchange-container {
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.integral-container {
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 94%;
+  height: 260rpx;
+  margin: 3%;
+  background: url('http://footgps-cshj.b0.upaiyun.com/miniapps/wallet/bg_integral_exchange.png') no-repeat;
+  background-size: 100% 100%;
+}
+.integral-tip {
+  font-size: 26rpx;
+  color: white;
+  font-weight: bold;
+}
+.integral-num {
+  margin-top: 10rpx;
+  font-size: 60rpx;
+  color: white;
+  /* font-weight: bold; */
+}
+
+.maxIntegral {
+  background-color: white;
+  height: 88rpx;
+  padding-left: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+.label-tip {
+  font-size: 30rpx;
+  color: #323232;
+  min-width: 220rpx;
+}
+
+.label-tip1{
+  font-size: 30rpx;
+  color: #323232;
+  min-width: 180rpx;
+  text-align: left
+}
+.max-num{
+  font-size: 30rpx;
+  color: #2d3357;
+}
+
+.exchange-container {
+  padding-left: 30rpx;
+  margin-top: 20rpx;
+  height: 88rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input {
+  display: flex;
+  font-size: 30rpx;
+  color: #323232;
+  flex-grow: 1
+}
+.min-btn-style{
+  height: 44rpx;
+  width: 120rpx;
+  right: 0;
+  margin-right: 30rpx;
+
+}
+.min-btn-style::after{  
+  border:1px solid #f91232;  
+}  
+
+.exchange-money {
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  color: #808080;
+  margin-left: 20rpx;
+}
+
+.btn-container {
+  margin-top: 150rpx;
+  height: 88rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.get-code{
+  min-width: 172rpx;
+  color: #008fd7;
+  font-size: 30rpx;
+  border-left: 1rpx solid #e5e5e5;
+  padding-left: 20rpx ;
+  flex-grow: 1
+}
+.show-secode{
+  width: 172rpx;
+  color: #808080;
+  font-size: 30rpx;
+  border-left: 1rpx solid #e5e5e5;
+  text-align: center
+}
