@@ -1,6 +1,7 @@
 package com.kitchee.app.helpeo.appCommon;
 
 import android.app.Application;
+import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.iflytek.cloud.SpeechUtility;
@@ -35,9 +36,18 @@ public class HelpEOApplication extends Application {
         // 注意： appid 必须和下载的SDK保持一致，否则会出现10407错误
         SpeechUtility.createUtility(HelpEOApplication.this, "appid=" + getString(R.string.app_id));
 
+        //异常处理器
+        MyCrashHandler.getInstance().init(this);
+
     }
 
     public static HelpEOApplication getInstance(){
         return helpEOApplication;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

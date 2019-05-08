@@ -35,6 +35,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
     private String uIcon;    // 对方的头像地址
     private String myIcon;    // 我的头像地址
     private String uid;        // 对方uid
+    private boolean viewstubCreate = false;
 
     public ChatMessageAdapter(List<ChatMessage> list, Context context, String uIcon, String myIcon) {
         this.list = list;
@@ -77,11 +78,13 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
 //                new GlideImageLoader().displayImage(context,uIcon,holder.imgMyHead);
             }
 
-            if(position == 0){
+            if(position == 0 && !viewstubCreate){
+                viewstubCreate = true;
                 View view = holder.viewStub.inflate();
                 initViewStub(view);
             }else{
-                holder.viewStub.setVisibility(View.GONE);
+
+//                holder.viewStub.setVisibility(View.VISIBLE);
             }
 
             holder.itemView.setTag(position);

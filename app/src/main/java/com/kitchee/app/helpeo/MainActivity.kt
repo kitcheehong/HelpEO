@@ -14,6 +14,7 @@ import com.kitchee.app.helpeo.appCommon.HelpEOApplication
 import com.kitchee.app.helpeo.base.BaseActivity
 import com.kitchee.app.helpeo.bean.HeadLineNews
 import com.kitchee.app.helpeo.customservicerobot.AutoChatActivity
+import com.kitchee.app.helpeo.disklrucache.DiskLruCache
 import com.kitchee.app.helpeo.display.ScreenAdaption
 import com.kitchee.app.helpeo.network.NetWork
 import com.kitchee.app.helpeo.testRxJava.RxJavaTextActivity
@@ -34,8 +35,7 @@ import java.util.*
 
 
 class MainActivity : BaseActivity() {
-    private val imageUrls = arrayOf("http://www.fdhao.cn/data/afficheimg/1495390513544727777.jpg", "http://www.fdhao.cn/data/afficheimg/1495589062250157826.jpg", "http://www.fdhao.cn/data/afficheimg/1494812104978168405.jpg", "http://www.fdhao.cn/data/afficheimg/1494981105456344186.jpg", "http://www.fdhao.cn/data/afficheimg/1495390183732065802.jpg", "http://www.fdhao.cn/data/afficheimg/1495409860833294008.jpg", "http://www.fdhao.cn/data/afficheimg/1494812581931179021.jpg", "http://www.fdhao.cn/data/afficheimg/1495588873555624520.jpg")
-
+    private val imageUrls = arrayOf("file:///android_asset/fengjing1.jpg", "file:///android_asset/fengjing2.jpg", "file:///android_asset/fengjing3.jpg", "file:///android_asset/fengjing4.jpg", "file:///android_asset/fengjing5.jpg", "file:///android_asset/fengjing6.jpg")
     protected var disposable: Disposable? = null
     private val adapter: LabelItemAdapter = LabelItemAdapter()
     private var keywork: String = "在下"
@@ -112,7 +112,7 @@ class MainActivity : BaseActivity() {
 
             override fun onLocate() {
                 //开始定位，这里模拟一下定位
-                Handler().postDelayed({ CityPicker.getInstance().locateComplete(LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS) }, 3000)
+                Handler().postDelayed({ CityPicker.getInstance().locateComplete(LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS) }, 1000)
             }
         }
 

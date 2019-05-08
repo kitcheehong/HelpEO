@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.kitchee.app.helpeo.bean.ZhuangbiImg;
 import com.kitchee.app.helpeo.testRxJava.ZhuangbiAdapter;
+import com.winallgz.kitchee.myimageloader.ImageLoader;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class LabelItemAdapter extends RecyclerView.Adapter {
         ZhuangbiImg zhuangbiImg = imgList.get(position);
         imgViewHolder.descriptionTv.setText(zhuangbiImg.description);
         Glide.with(imgViewHolder.itemView.getContext()).load(zhuangbiImg.image_url).into(imgViewHolder.imageIv);
+//        ImageLoader.build(imgViewHolder.itemView.getContext()).bindBitmap(zhuangbiImg.image_url,imgViewHolder.imageIv);
     }
 
     @Override

@@ -11,7 +11,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
+        multiDexEnabled true//如果支持最小版本小于21，那么需要引入multiDex库
     }
 
     buildTypes {
@@ -78,10 +78,12 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.2'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     compile "com.android.support:recyclerview-v7:26.1.0"
     implementation project(":swipebacklib")
+    implementation project(":myimageloader")
 
     //网络请求RxJava+Retrofit+OkHttp
     implementation 'com.squareup.okhttp3:okhttp:3.8.0'
@@ -138,8 +140,11 @@ dependencies {
     //logger
     implementation 'com.orhanobut:logger:2.2.0'
 
+    //pdfView阅读器
+    compile 'com.github.barteksc:android-pdf-viewer:2.8.2'
 
-    androidTestCompile 'junit:junit:4.12'
+
+//    androidTestCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()

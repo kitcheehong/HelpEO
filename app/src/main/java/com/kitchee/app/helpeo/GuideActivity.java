@@ -96,7 +96,7 @@ public class GuideActivity extends BaseActivity {
         if(myHandler != null && myHandler.hasMessages(1)){
             myHandler.removeMessages(1);
         }
-        Intent intent = new Intent(this,LoginActivity.class);
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.screen_zoom_in,R.anim.screen_zoom_out);
     }
